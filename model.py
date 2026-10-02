@@ -37,8 +37,16 @@ def should_explore(epsilon, rng):
     """Return True with probability epsilon using the provided numpy Generator."""
     return rng.random() < epsilon
 
-# Step 6 - epsilon_greedy_action (not yet solved)
-# TODO: implement
+# Step 6 - epsilon_greedy_action
+import numpy as np
+
+def epsilon_greedy_action(q_table, state, epsilon, action_space, rng):
+    """Return an epsilon-greedy action for the given state."""
+    if should_explore(epsilon, rng):
+        return sample_random_action(action_space)
+    else:
+        best_actions = np.flatnonzero(q_table[state] == q_table[state].max())
+        return int(rng.choice(best_actions))
 
 # Step 7 - decay_epsilon (not yet solved)
 # TODO: implement
