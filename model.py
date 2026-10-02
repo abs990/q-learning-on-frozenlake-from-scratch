@@ -32,8 +32,10 @@ def greedy_action(q_table, state):
 def sample_random_action(action_space):
     return int(action_space.sample())
 
-# Step 5 - should_explore (not yet solved)
-# TODO: implement
+# Step 5 - should_explore
+def should_explore(epsilon, rng):
+    """Return True with probability epsilon using the provided numpy Generator."""
+    return rng.random() < epsilon
 
 # Step 6 - epsilon_greedy_action (not yet solved)
 # TODO: implement
