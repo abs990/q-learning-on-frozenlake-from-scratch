@@ -82,8 +82,18 @@ def interaction_step(env, q_table, state, epsilon, alpha, gamma, rng):
     q_learning_update(q_table, state, best_action, reward, next_state, done, alpha, gamma)
     return next_state, reward, done
 
-# Step 12 - run_training_episode (not yet solved)
-# TODO: implement
+# Step 12 - run_training_episode
+def run_training_episode(env, q_table, epsilon, alpha, gamma, rng, max_steps=200):
+    # reset env, then repeatedly call interaction_step until done or max_steps, returning total reward.
+    state, _ = env.reset()
+    total_reward = 0.0
+    for _ in range(max_steps):
+        state, reward, done = interaction_step(env, q_table, state, epsilon, alpha, gamma, rng)
+        total_reward += reward
+        if done:
+            env.reset()
+            break
+    return total_reward
 
 # Step 13 - train_q_learning (not yet solved)
 # TODO: implement
