@@ -58,8 +58,9 @@ def td_target(reward, gamma, q_table, next_state, done):
         reward += gamma * max_q_value(q_table, next_state)
     return reward
 
-# Step 9 - td_error (not yet solved)
-# TODO: implement
+# Step 9 - td_error
+def td_error(target, q_table, state, action):
+    return (target - q_table[state][action])
 
 # Step 10 - q_learning_update (not yet solved)
 # TODO: implement
